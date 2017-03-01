@@ -415,6 +415,20 @@ public:
    * \param time_spec the new time
    */
   virtual void set_time_unknown_pps(const ::osmosdr::time_spec_t &time_spec) = 0;
+
+  /*!
+   * Enable Bias-T power.
+   * \param enable true for power on line.
+   * \param chan the channel.
+   */
+  virtual void set_biast( bool enable, size_t chan = 0 ) = 0;
+
+  /*!
+   * Enable notch AM/FM filter.
+   * \param Enable true for notch filter active.
+   * \param chan the channel.
+   */
+  virtual void set_notch_AMFM_filter( bool enable, size_t chan = 0 ) = 0;
 };
 
 } /* namespace osmosdr */

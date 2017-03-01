@@ -282,7 +282,7 @@ void soapy_source_c::set_dc_offset( const std::complex<double> &offset, size_t c
 void soapy_source_c::set_iq_balance_mode( int mode, size_t chan )
 {
     if (mode == osmosdr::source::IQBalanceOff) return; //no error on disable
-    throw std::runtime_error("soapy_source_c::set_iq_balance_mode() not supported");
+    //throw std::runtime_error("soapy_source_c::set_iq_balance_mode() not supported");
 }
 
 void soapy_source_c::set_iq_balance( const std::complex<double> &balance, size_t chan )
@@ -387,4 +387,12 @@ void soapy_source_c::set_time_next_pps(const ::osmosdr::time_spec_t &time_spec)
 void soapy_source_c::set_time_unknown_pps(const ::osmosdr::time_spec_t &time_spec)
 {
     _device->setHardwareTime(time_spec.to_ticks(1e9), "UNKNOWN_PPS");
+}
+
+void soapy_source_c::set_biast(bool enable, size_t chan) {
+    _device->writeSetting("biasT_ctrl", enable ? "true":"false");
+}
+
+void soapy_source_c::set_notch_AMFM_filter(bool enable, size_t chan) {
+    _device->writeSetting("rfnotch_ctrl", enable ? "true":"false");
 }

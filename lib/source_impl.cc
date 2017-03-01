@@ -966,3 +966,21 @@ void source_impl::set_time_unknown_pps(const osmosdr::time_spec_t &time_spec)
     dev->set_time_unknown_pps( time_spec );
   }
 }
+
+void source_impl::set_biast(bool enable, size_t chan)
+{
+    size_t channel = 0;
+    BOOST_FOREACH( source_iface *dev, _devs )
+      for (size_t dev_chan = 0; dev_chan < dev->get_num_channels(); dev_chan++)
+        if ( chan == channel++ )
+          dev->set_biast(enable, dev_chan );
+}
+
+void source_impl::set_notch_AMFM_filter(bool enable, size_t chan)
+{
+    size_t channel = 0;
+    BOOST_FOREACH( source_iface *dev, _devs )
+      for (size_t dev_chan = 0; dev_chan < dev->get_num_channels(); dev_chan++)
+        if ( chan == channel++ )
+          dev->set_notch_AMFM_filter(enable, dev_chan );
+}

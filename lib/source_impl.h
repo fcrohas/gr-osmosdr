@@ -90,6 +90,8 @@ public:
   void set_time_now(const ::osmosdr::time_spec_t &time_spec, size_t mboard = 0);
   void set_time_next_pps(const ::osmosdr::time_spec_t &time_spec);
   void set_time_unknown_pps(const ::osmosdr::time_spec_t &time_spec);
+  void set_biast( bool enable, size_t chan = 0 );
+  void set_notch_AMFM_filter( bool enable, size_t chan = 0 );
 
 private:
   std::vector< source_iface * > _devs;
@@ -112,3 +114,4 @@ private:
 };
 
 #endif /* INCLUDED_OSMOSDR_SOURCE_IMPL_H */
+

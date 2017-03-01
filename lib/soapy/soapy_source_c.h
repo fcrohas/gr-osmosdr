@@ -130,7 +130,8 @@ void set_time_now(const ::osmosdr::time_spec_t &time_spec,
                             size_t mboard);
 void set_time_next_pps(const ::osmosdr::time_spec_t &time_spec);
 void set_time_unknown_pps(const ::osmosdr::time_spec_t &time_spec);
-
+void set_biast(bool enable, size_t chan );
+void set_notch_AMFM_filter(bool enable, size_t chan );
 private:
     SoapySDR::Device *_device;
     SoapySDR::Stream *_stream;

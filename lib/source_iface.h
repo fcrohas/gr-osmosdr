@@ -395,6 +395,22 @@ public:
    * \param time_spec the new time
    */
   virtual void set_time_unknown_pps(const ::osmosdr::time_spec_t &time_spec) { }
+
+  /*!
+   * Set the RX frontend bias-t power.
+   *
+   * \param enable true for biast
+   * \param chan the channel index 0 to N-1
+   */
+  virtual void set_biast( bool enable, size_t chan = 0 ) { }
+
+  /*!
+   * Set the RX frontend notch filter.
+   *
+   * \param enable true for notch filter
+   * \param chan the channel index 0 to N-1
+   */
+  virtual void set_notch_AMFM_filter( bool enable, size_t chan = 0 ) { }
 };
 
 #endif // OSMOSDR_SOURCE_IFACE_H
